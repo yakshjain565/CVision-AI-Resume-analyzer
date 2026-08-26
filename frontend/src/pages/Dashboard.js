@@ -232,9 +232,10 @@ const Dashboard = () => {
         </Alert>
       )}
 
+      {/* MAIN GRID CONTAINER - FIXED */}
       <Grid container spacing={3}>
-        {/* Left Column */}
-        <Grid item xs={12} md={8}>
+        {/* Left Column - FIXED */}
+        <Grid size={{ xs: 12, md: 8 }}>
           {/* Upload Section */}
           <ResumeUpload onUploadSuccess={handleUploadSuccess} />
 
@@ -265,8 +266,9 @@ const Dashboard = () => {
               </Box>
             </Box>
 
+            {/* Stats Grid - FIXED */}
             <Grid container spacing={2} sx={{ mb: 3 }}>
-              <Grid item xs={4}>
+              <Grid size={{ xs: 4 }}>
                 <Paper 
                   variant="outlined" 
                   sx={{ 
@@ -285,7 +287,7 @@ const Dashboard = () => {
                   <Typography variant="caption">Resume Score</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={4}>
+              <Grid size={{ xs: 4 }}>
                 <Paper 
                   variant="outlined" 
                   sx={{ 
@@ -304,7 +306,7 @@ const Dashboard = () => {
                   <Typography variant="caption">ATS Compatibility</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={4}>
+              <Grid size={{ xs: 4 }}>
                 <Paper 
                   variant="outlined" 
                   sx={{ 
@@ -382,8 +384,8 @@ const Dashboard = () => {
           </Paper>
         </Grid>
 
-        {/* Right Column */}
-        <Grid item xs={12} md={4}>
+        {/* Right Column - FIXED */}
+        <Grid size={{ xs: 12, md: 4 }}>
           {/* Job Matches */}
           <Paper 
             sx={{ 
@@ -482,8 +484,10 @@ const Dashboard = () => {
             <Typography variant="h6" gutterBottom>
               Admin Dashboard
             </Typography>
+            
+            {/* Admin Stats Grid - FIXED */}
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid size={{ xs: 6 }}>
                 <Paper 
                   sx={{ 
                     p: 2, 
@@ -501,7 +505,7 @@ const Dashboard = () => {
                   <Typography variant="caption">New Job Listings</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={6}>
+              <Grid size={{ xs: 6 }}>
                 <Paper 
                   sx={{ 
                     p: 2, 

@@ -113,7 +113,7 @@ const AppliedJobs = () => {
       ) : (
         <Grid container spacing={3}>
           {applications.map((app, index) => (
-            <Grid item xs={12} key={index}>
+            <Grid key={index} size={12}>
               <Card sx={{ 
                 borderRadius: 2,
                 transition: 'transform 0.2s',

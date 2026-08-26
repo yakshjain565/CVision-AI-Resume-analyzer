@@ -175,13 +175,17 @@ const PostJob = () => {
             <form onSubmit={handleSubmit}>
               <Grid container spacing={3}>
                 {/* Basic Information */}
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <Typography variant="h6" gutterBottom sx={{ color: '#667eea' }}>
                     Basic Information
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <TextField
                     fullWidth
                     label="Job Title"
@@ -199,7 +203,11 @@ const PostJob = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <TextField
                     fullWidth
                     label="Company Name"
@@ -217,7 +225,11 @@ const PostJob = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <TextField
                     fullWidth
                     label="Location"
@@ -235,7 +247,11 @@ const PostJob = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <TextField
                     fullWidth
                     select
@@ -254,13 +270,17 @@ const PostJob = () => {
                 </Grid>
 
                 {/* Salary Information */}
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <Typography variant="h6" gutterBottom sx={{ color: '#667eea', mt: 2 }}>
                     Salary Information
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <TextField
                     fullWidth
                     label="Minimum Salary"
@@ -278,7 +298,11 @@ const PostJob = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <TextField
                     fullWidth
                     label="Maximum Salary"
@@ -296,7 +320,11 @@ const PostJob = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <TextField
                     fullWidth
                     select
@@ -313,13 +341,13 @@ const PostJob = () => {
                 </Grid>
 
                 {/* Requirements */}
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <Typography variant="h6" gutterBottom sx={{ color: '#667eea', mt: 2 }}>
                     Job Requirements
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <TextField
                     fullWidth
                     label="Skills"
@@ -353,7 +381,11 @@ const PostJob = () => {
                   </Box>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <TextField
                     fullWidth
                     select
@@ -377,7 +409,11 @@ const PostJob = () => {
                   </TextField>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <TextField
                     fullWidth
                     select
@@ -402,13 +438,13 @@ const PostJob = () => {
                 </Grid>
 
                 {/* Description */}
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <Typography variant="h6" gutterBottom sx={{ color: '#667eea', mt: 2 }}>
                     Job Description
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <TextField
                     fullWidth
                     multiline
@@ -428,7 +464,7 @@ const PostJob = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <TextField
                     fullWidth
                     type="date"
@@ -448,7 +484,7 @@ const PostJob = () => {
                 </Grid>
 
                 {/* Submit Button */}
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <Button
                     type="submit"
                     fullWidth

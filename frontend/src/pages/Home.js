@@ -198,7 +198,11 @@ const Home = () => {
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Fade in timeout={1000}>
                 <Box>
                   <Typography
@@ -266,7 +270,11 @@ const Home = () => {
                 </Box>
               </Fade>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Zoom in timeout={1000}>
                 <Box
                   sx={{
@@ -295,7 +303,13 @@ const Home = () => {
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <Grid container spacing={3} justifyContent="center">
           {stats.map((stat, index) => (
-            <Grid item xs={6} sm={6} md={3} key={index}>
+            <Grid
+              key={index}
+              size={{
+                xs: 6,
+                sm: 6,
+                md: 3
+              }}>
               <Fade in timeout={1000 + index * 200}>
                 <Card
                   sx={{
@@ -484,7 +498,11 @@ const Home = () => {
       <Box sx={{ bgcolor: '#1a1a1a', color: 'white', py: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
                 CVision
               </Typography>
@@ -492,7 +510,11 @@ const Home = () => {
                 AI-Powered Resume Analyzer & Job Matching Platform helping professionals land their dream jobs.
               </Typography>
             </Grid>
-            <Grid item xs={6} md={2}>
+            <Grid
+              size={{
+                xs: 6,
+                md: 2
+              }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
                 Product
               </Typography>
@@ -506,7 +528,11 @@ const Home = () => {
                 FAQ
               </Typography>
             </Grid>
-            <Grid item xs={6} md={2}>
+            <Grid
+              size={{
+                xs: 6,
+                md: 2
+              }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
                 Company
               </Typography>
@@ -520,7 +546,11 @@ const Home = () => {
                 Contact
               </Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
                 Subscribe
               </Typography>

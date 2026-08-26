@@ -160,7 +160,11 @@ const JobDetails = () => {
 
         <Grid container spacing={3}>
           {/* Main Content */}
-          <Grid item xs={12} md={8}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
             <Fade in timeout={500}>
               <Paper sx={{ p: 4, borderRadius: 3 }}>
                 {/* Header */}
@@ -307,7 +311,11 @@ const JobDetails = () => {
           </Grid>
 
           {/* Sidebar */}
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             {/* Apply Card */}
             <Zoom in timeout={700}>
               <Card sx={{ mb: 3, borderRadius: 3 }}>

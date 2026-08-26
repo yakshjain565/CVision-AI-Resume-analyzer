@@ -85,7 +85,7 @@ const MyPostedJobs = () => {
       ) : (
         <Grid container spacing={3}>
           {jobs.map((job) => (
-            <Grid item xs={12} key={job._id}>
+            <Grid key={job._id} size={12}>
               <Card sx={{ 
                 borderRadius: 2,
                 transition: 'transform 0.2s',

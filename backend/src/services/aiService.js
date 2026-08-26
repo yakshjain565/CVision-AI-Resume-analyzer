@@ -1,75 +1,117 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const axios = require('axios');
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// Use OpenRouter API directly
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-// Analyze resume with AI
+// Analyze resume with AI using OpenRouter
 exports.analyzeResumeWithAI = async (resumeText) => {
   try {
-    console.log('Sending to Gemini AI...');
+    console.log('Starting AI analysis with OpenRouter...');
     
-    const prompt = `
-      You are an expert ATS (Applicant Tracking System) and resume analyzer. 
-      Analyze this resume and provide detailed feedback in JSON format.
-
-      Resume text:
-      ${resumeText.substring(0, 4000)}
-
-      Return a JSON object with exactly this structure:
-      {
-        "name": "Candidate's full name",
-        "email": "Email address",
-        "phone": "Phone number",
-        "skills": ["skill1", "skill2", "skill3"],
-        "experience": [
+    // Updated: Working free models on OpenRouter
+    const modelsToTry = [
+      'google/gemini-flash-1.5',           // Gemini Flash (free)
+      'microsoft/phi-3-mini-128k-instruct', // Phi-3 Mini (free)
+      'qwen/qwen-2.5-7b-instruct',          // Qwen 2.5 (free)
+      'meta-llama/llama-3.1-8b-instruct'    // Llama 3.1 (free)
+    ];
+    
+    let lastError = null;
+    
+    for (const model of modelsToTry) {
+      try {
+        console.log(`Trying model: ${model}`);
+        
+        const response = await axios.post(
+          OPENROUTER_URL,
           {
-            "title": "Job title",
-            "company": "Company name",
-            "duration": "Time period",
-            "description": "Brief description"
-          }
-        ],
-        "education": [
+            model: model,
+            messages: [
+              {
+                role: 'user',
+                content: `
+                  You are an expert ATS (Applicant Tracking System) and resume analyzer. 
+                  Analyze this resume and provide detailed feedback in JSON format.
+
+                  Resume text:
+                  ${resumeText.substring(0, 4000)}
+
+                  Return a JSON object with exactly this structure:
+                  {
+                    "name": "Candidate's full name",
+                    "email": "Email address",
+                    "phone": "Phone number",
+                    "skills": ["skill1", "skill2", "skill3"],
+                    "experience": [
+                      {
+                        "title": "Job title",
+                        "company": "Company name",
+                        "duration": "Time period",
+                        "description": "Brief description"
+                      }
+                    ],
+                    "education": [
+                      {
+                        "degree": "Degree name",
+                        "institution": "Institution name",
+                        "year": "Graduation year"
+                      }
+                    ],
+                    "totalExperience": 3,
+                    "atsScore": 75,
+                    "missingKeywords": ["React", "Node.js", "MongoDB"],
+                    "suggestions": [
+                      "Add more technical skills",
+                      "Include quantifiable achievements",
+                      "Optimize for ATS with keywords"
+                    ],
+                    "formatIssues": [
+                      "Add professional summary",
+                      "Use bullet points for experience"
+                    ]
+                  }
+
+                  Only return valid JSON, no other text.
+                `
+              }
+            ],
+            temperature: 0.7
+          },
           {
-            "degree": "Degree name",
-            "institution": "Institution name",
-            "year": "Graduation year"
+            headers: {
+              'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+              'Content-Type': 'application/json',
+              'HTTP-Referer': 'http://localhost:3000',
+              'X-Title': 'CVision Resume Analyzer'
+            }
           }
-        ],
-        "totalExperience": 3,
-        "atsScore": 75,
-        "missingKeywords": ["React", "Node.js", "MongoDB"],
-        "suggestions": [
-          "Add more technical skills",
-          "Include quantifiable achievements",
-          "Optimize for ATS with keywords"
-        ],
-        "formatIssues": [
-          "Add professional summary",
-          "Use bullet points for experience"
-        ]
+        );
+        
+        const text = response.data.choices[0].message.content;
+        console.log(`✅ AI Response received from ${model}`);
+        
+        // Extract JSON from response
+        const jsonMatch = text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          return JSON.parse(jsonMatch[0]);
+        } else {
+          throw new Error('No JSON found in response');
+        }
+      } catch (error) {
+        const errorMsg = error.response?.data?.error?.message || error.message;
+        console.log(`Model ${model} failed:`, errorMsg);
+        lastError = error;
+        // Continue to next model
       }
-
-      Only return valid JSON, no other text.
-    `;
-
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-    
-    console.log('AI Response received');
-    
-    // Extract JSON from response
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
-    } else {
-      throw new Error('No JSON found in response');
     }
+    
+    // If all models fail, use fallback
+    console.log('⚠️ All models failed, using fallback analysis');
+    return fallbackAnalysis(resumeText);
+    
   } catch (error) {
     console.error('AI Analysis Error:', error);
-    // Fallback to basic analysis
     return fallbackAnalysis(resumeText);
   }
 };

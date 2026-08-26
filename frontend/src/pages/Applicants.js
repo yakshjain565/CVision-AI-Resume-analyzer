@@ -149,7 +149,7 @@ const Applicants = () => {
       ) : (
         <Grid container spacing={3}>
           {applicants.map((applicant, index) => (
-            <Grid item xs={12} key={index}>
+            <Grid key={index} size={12}>
               <Card sx={{ 
                 borderRadius: 2,
                 transition: 'transform 0.2s',

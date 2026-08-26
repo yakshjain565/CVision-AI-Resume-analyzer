@@ -183,7 +183,11 @@ const Jobs = () => {
           }}
         >
           <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl fullWidth variant="outlined" size="small">
                 <InputLabel>Job Type</InputLabel>
                 <Select
@@ -198,7 +202,11 @@ const Jobs = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl fullWidth variant="outlined" size="small">
                 <InputLabel>Location</InputLabel>
                 <Select
@@ -213,7 +221,11 @@ const Jobs = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Button
                 fullWidth
                 variant="outlined"
@@ -257,7 +269,7 @@ const Jobs = () => {
         <Grid container spacing={3}>
           {filteredJobs.length > 0 ? (
             filteredJobs.map((job, index) => (
-              <Grid item xs={12} key={job._id}>
+              <Grid key={job._id} size={12}>
                 <Fade in timeout={500 + index * 100}>
                   <Card
                     sx={{
@@ -271,7 +283,11 @@ const Jobs = () => {
                   >
                     <CardContent sx={{ p: 3 }}>
                       <Grid container spacing={2}>
-                        <Grid item xs={12} md={8}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 8
+                          }}>
                           <Typography 
                             variant="h5" 
                             gutterBottom
@@ -327,12 +343,17 @@ const Jobs = () => {
                           </Box>
                         </Grid>
 
-                        <Grid item xs={12} md={4} sx={{ 
-                          display: 'flex', 
-                          flexDirection: 'column', 
-                          alignItems: { md: 'flex-end' },
-                          justifyContent: 'space-between'
-                        }}>
+                        <Grid
+                          sx={{ 
+                            display: 'flex', 
+                            flexDirection: 'column', 
+                            alignItems: { md: 'flex-end' },
+                            justifyContent: 'space-between'
+                          }}
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: { md: 'flex-end' } }}>
                             <Chip
                               label={job.type}
@@ -392,7 +413,7 @@ const Jobs = () => {
               </Grid>
             ))
           ) : (
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Fade in>
                 <Paper sx={{ 
                   p: 6, 

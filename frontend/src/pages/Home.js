@@ -166,16 +166,17 @@ const Home = () => {
         </Container>
       </AppBar>
 
-      {/* Hero Section */}
+      {/* Hero Section - Purple Gradient Background */}
       <Box
         sx={{
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           position: 'relative',
           overflow: 'hidden',
-          pt: { xs: 8, md: 0 }
+          pt: { xs: 8, md: 0 },
+          // Purple gradient background (your original)
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         }}
       >
         {/* Animated Background */}
@@ -198,11 +199,7 @@ const Home = () => {
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={4} alignItems="center">
-            <Grid
-              size={{
-                xs: 12,
-                md: 6
-              }}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <Fade in timeout={1000}>
                 <Box>
                   <Typography
@@ -270,11 +267,7 @@ const Home = () => {
                 </Box>
               </Fade>
             </Grid>
-            <Grid
-              size={{
-                xs: 12,
-                md: 6
-              }}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <Zoom in timeout={1000}>
                 <Box
                   sx={{
@@ -283,7 +276,7 @@ const Home = () => {
                   }}
                 >
                   <img
-                    src="https://illustrations.popsy.co/white/resume.svg"
+                    src="/resumeanalyser.png"
                     alt="Resume Analysis"
                     style={{
                       maxWidth: '100%',
@@ -299,7 +292,7 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Stats Section - FIXED WITH PROPER GRID */}
+      {/* Stats Section */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <Grid container spacing={3} justifyContent="center">
           {stats.map((stat, index) => (
@@ -342,7 +335,7 @@ const Home = () => {
         </Grid>
       </Container>
 
-      {/* Features Section - FIXED WITH PROPER GRID */}
+      {/* Features Section */}
       <Box sx={{ bgcolor: '#f8f9fa', py: 8 }}>
         <Container maxWidth="lg">
           <Typography
@@ -368,7 +361,6 @@ const Home = () => {
             Our AI-powered platform helps you stand out in the competitive job market
           </Typography>
 
-          {/* FIXED: Simple Flexbox with proper widths */}
           <Box
             sx={{
               display: 'flex',
@@ -498,11 +490,7 @@ const Home = () => {
       <Box sx={{ bgcolor: '#1a1a1a', color: 'white', py: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            <Grid
-              size={{
-                xs: 12,
-                md: 4
-              }}>
+            <Grid size={{ xs: 12, md: 4 }}>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
                 CVision
               </Typography>
@@ -510,11 +498,7 @@ const Home = () => {
                 AI-Powered Resume Analyzer & Job Matching Platform helping professionals land their dream jobs.
               </Typography>
             </Grid>
-            <Grid
-              size={{
-                xs: 6,
-                md: 2
-              }}>
+            <Grid size={{ xs: 6, md: 2 }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
                 Product
               </Typography>
@@ -528,11 +512,7 @@ const Home = () => {
                 FAQ
               </Typography>
             </Grid>
-            <Grid
-              size={{
-                xs: 6,
-                md: 2
-              }}>
+            <Grid size={{ xs: 6, md: 2 }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
                 Company
               </Typography>
@@ -546,11 +526,7 @@ const Home = () => {
                 Contact
               </Typography>
             </Grid>
-            <Grid
-              size={{
-                xs: 12,
-                md: 4
-              }}>
+            <Grid size={{ xs: 12, md: 4 }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
                 Subscribe
               </Typography>
